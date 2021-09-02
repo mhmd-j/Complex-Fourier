@@ -1,19 +1,15 @@
 clc
 clear
 close all
-% Im = imread('plot 3.png');
-% Cordmat = pic2points(Im);
-% Cordmat(:,2) = Cordmat(:,2)-mean(Cordmat (:,2));
-% Cordmat(:,1) = Cordmat(:,1)-mean(Cordmat (:,1));
-%DO NOT CHANGE THE ENDTIME, since we assumed that the period of the figure
-%is 1s
+%DO NOT CHANGE THE ENDTIME, since we assumed that the period of the figure is 1s
 endtime = 1;
 numpoints = 500;
-% define function
+% define function that creates your desired figure
 t = linspace(0,endtime,numpoints);
 Cordmat(:,2) = (sin(2*t));
 Cordmat(:,1) = exp(cos(5*t));
-% transfer the center of the figure to the origin
+
+% transfering the center of the figure to the origin so that C0 would be zero
 Cordmat(:,2) = Cordmat(:,2)-mean(Cordmat (:,2));
 Cordmat(:,1) = Cordmat(:,1)-mean(Cordmat (:,1));
 
@@ -39,18 +35,7 @@ Ax = figAx.CurrentAxes;
 axis equal
 grid on
 xylim = [Ax.XLim, Ax.YLim];
-%%
-% h = animatedline;
-% axis([-0.8,0.4,-0.4,0.2])
-% x = real(F);
-% y = imag(F);
-% for k = 1:5:numpoints-4
-%     xvec = x(k:k+4);
-%     yvec = y(k:k+4);
-%     addpoints(h,xvec,yvec)
-%     drawnow
-% end
-%%
+%%-----------------------------
 ntF = C.*vecorg;
 xnOriginP = 0;
 ynOriginP = 0;
@@ -59,8 +44,6 @@ ynOriginN = 0;
 X = 0; Y = 0;
 fig = figure('Name','Vectors');
 figure(fig)
-% plot(real(F),imag(F))
-% hold on
 axis equal
 for T = 1:length(ntF)
     % T = 1
